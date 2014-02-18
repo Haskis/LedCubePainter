@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>604</width>
-    <height>476</height>
+    <height>484</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -279,13 +279,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="SEND">
-          <property name="text">
-           <string>SEND</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer name="verticalSpacer">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
@@ -329,14 +322,14 @@
      <x>0</x>
      <y>0</y>
      <width>604</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionOpen"/>
+    <addaction name="actionInitializeSerialPort"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -352,6 +345,11 @@
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
+   </property>
+  </action>
+  <action name="actionInitializeSerialPort">
+   <property name="text">
+    <string>Initialize Serial Port</string>
    </property>
   </action>
  </widget>

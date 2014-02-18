@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <qextserialport.h>
+#include <serialportoptionswidget.h>
 
 namespace Ui {
 class MainWindow;
@@ -16,13 +17,12 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-private slots:
-    void on_SEND_clicked();
-
 private:
     Ui::MainWindow *ui;
 
-
+    SerialPortOptionsWidget *serialPortWidget;
+private slots:
+    void showInitSerialPortWidget();
 };
 
 #endif // MAINWINDOW_H

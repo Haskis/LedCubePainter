@@ -7,6 +7,8 @@
 #include <GL/glut.h>
 #include <QtCore>
 #include <qextserialport.h>
+#include "GL/glu.h"
+#include <QDebug>
 
 class GLWidget : public QGLWidget
 {
@@ -14,14 +16,11 @@ class GLWidget : public QGLWidget
 public:
     explicit GLWidget(QWidget *parent = 0);
 
-    int normalizeAngle(int);
+    void updateCubeTable();
 
-    char outBuffer[64];
-    QextSerialPort * port;
-void updateCubeTable();
-signals:
-    
 public slots:
+    void initSerialPort(QString portURL);
+
     void toggleBackgroundColor(bool toBlack);
     void setXRotation(int angle);
     void setYRotation(int angle);
@@ -47,24 +46,12 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
 
-
-
 private:
-
-
-    void initSerialPort();
-
-
-
-
     int selection(int x, int y);
 
     int xRot;
     int yRot;
     int zRot;
-
-    int diodesCounter;
-    bool paintingValue;
 
     GLdouble orthoLeft;
     GLdouble orthoRight;
@@ -73,10 +60,20 @@ private:
     GLdouble orthoNear;
     GLdouble ortoFar;
 
+    int diodesCounter;
+    bool paintingValue;
+
+    //If true then we display that plane in glWidget
     bool plane[8];
-    int ledsOn[512];
 
+    //If true then this diode is on.
+    bool ledsOn[512];
 
+    //UART buffer
+    char outBuffer[64];
+
+    //Serial port object
+    QextSerialPort * port;
 };
 
 #endif // GLWIDGET_H
